@@ -20,6 +20,28 @@ const virtualDOM = (
   </div>
 )
 
-TinyReact.render(virtualDOM, root)
+// TinyReact.render(virtualDOM, root)
 
-console.log(virtualDOM, 21);
+// function Demo() {
+//   return <div>Hello</div>
+// }
+
+// function Heart(props) {
+//   return <div><Demo /> {props.title}</div>
+// }
+
+class Alert extends TinyReact.Component {
+  constructor(props) {
+    // 将props传递给父类Component
+    super(props)
+  }
+
+  render () {
+    return <div>
+      {this.props.title}
+      {this.props.age}
+    </div>
+  }
+}
+
+TinyReact.render(<Alert title='Hello React' age={20} />, root)
