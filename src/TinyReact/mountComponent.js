@@ -18,7 +18,6 @@ export default function mountComponent(virtualDOM, container) {
   } else {
     mountNativeElement(nextVirtualDOM, container)
   }
-
 } 
 
 function buildFunctionComponent(virtualDOM) {

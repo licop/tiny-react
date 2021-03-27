@@ -20,6 +20,28 @@ const virtualDOM = (
   </div>
 )
 
+const modifyDOM = (
+  <div className="container">
+    <h1>你好 Tiny React</h1>
+    <h2 data-test="test123">(编码必杀技)</h2>
+    <div>
+      嵌套1 <div>嵌套 1.1</div>
+    </div>
+    <h3>(观察: 这个将会被改变)</h3>
+    {2 == 1 && <div>如果2和1相等渲染当前内容</div>}
+    {2 == 2 && <div>2</div>}
+    <span>这是一段被修改过的内容</span>
+    <button onClick={() => alert("你好!!!!!")}>点击我</button>
+    <input type="text" value="13" />
+  </div>
+)
+
+TinyReact.render(virtualDOM, root)
+
+setTimeout(() => {
+  TinyReact.render(modifyDOM, root)
+}, 2000)
+
 // TinyReact.render(virtualDOM, root)
 
 // function Demo() {
@@ -30,18 +52,18 @@ const virtualDOM = (
 //   return <div><Demo /> {props.title}</div>
 // }
 
-class Alert extends TinyReact.Component {
-  constructor(props) {
-    // 将props传递给父类Component
-    super(props)
-  }
+// class Alert extends TinyReact.Component {
+//   constructor(props) {
+//     // 将props传递给父类Component
+//     super(props)
+//   }
 
-  render () {
-    return <div>
-      {this.props.title}
-      {this.props.age}
-    </div>
-  }
-}
+//   render () {
+//     return <div>
+//       {this.props.title}
+//       {this.props.age}
+//     </div>
+//   }
+// }
 
-TinyReact.render(<Alert title='Hello React' age={20} />, root)
+// TinyReact.render(<Alert title='Hello React' age={20} />, root)
