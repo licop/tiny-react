@@ -37,11 +37,11 @@ const modifyDOM = (
   </div>
 )
 
-TinyReact.render(virtualDOM, root)
+// TinyReact.render(virtualDOM, root)
 
-setTimeout(() => {
-  TinyReact.render(modifyDOM, root)
-}, 2000)
+// setTimeout(() => {
+//   TinyReact.render(modifyDOM, root)
+// }, 2000)
 
 // TinyReact.render(virtualDOM, root)
 
@@ -53,18 +53,31 @@ setTimeout(() => {
 //   return <div><Demo /> {props.title}</div>
 // }
 
-// class Alert extends TinyReact.Component {
-//   constructor(props) {
-//     // 将props传递给父类Component
-//     super(props)
-//   }
+class Alert extends TinyReact.Component {
+  constructor(props) {
+    // 将props传递给父类Component
+    super(props)
+    this.state = {
+      title: 'Default Title'
+    }
+    this.handleClick = this.handleClick.bind(this)
+  }
+  handleClick () {
+    this.setState({
+      title: 'Changed Title'
+    })
+  }
+  render () {
+    console.log(this, 71)
+    return <div>
+      {this.props.title}
+      {this.props.age}
+      <div>
+        {this.state.title}
+        <button onClick={this.handleClick}>改变title</button>
+      </div>
+    </div>
+  }
+}
 
-//   render () {
-//     return <div>
-//       {this.props.title}
-//       {this.props.age}
-//     </div>
-//   }
-// }
-
-// TinyReact.render(<Alert title='Hello React' age={20} />, root)
+TinyReact.render(<Alert title='Hello React' age={20} />, root)
