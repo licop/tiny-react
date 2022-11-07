@@ -36,6 +36,7 @@ export default function unmountNode(node) {
     for(let i = 0; i < node.childNodes.length; i++) {
       console.log(node, i, 27)
       unmountNode(node.childNodes[i])
+      i--
     }
   }
 
