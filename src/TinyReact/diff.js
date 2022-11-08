@@ -20,7 +20,7 @@ export default function diff(virtualDOM, container, oldDom) {
      // 用创建出来的真实 DOM 元素 替换旧的 DOM 元素
     oldDom.parentNode.replaceChild(newElement, oldDom)
   } else if(typeof virtualDOM.type === 'function') {
-    // 渲染组件
+    // 组件更新，渲染比对组件
     diffComponent(virtualDOM, oldComponent, oldDom, container)
   } else if(oldVirtualDOM && virtualDOM.type === oldVirtualDOM.type) {
     if(virtualDOM.type === 'text') {
@@ -44,7 +44,7 @@ export default function diff(virtualDOM, container, oldDom) {
     }
 
     let hasNoKey = Object.keys(keyedElements).length === 0
-
+    
     if(hasNoKey) {
        // 递归对比VirtualDom的子元素,通过索引
       virtualDOM.children.forEach((child, i) => {
@@ -66,7 +66,6 @@ export default function diff(virtualDOM, container, oldDom) {
               // 元素位置发生了变化
              // 将 domElement 插入到当前元素位置的前面 oldDOM.childNodes[i] 就是当前位置
              // domElement 就被放入了当前位置
-              console.log(domElement, oldDom.childNodes[i], key, 69)
               oldDom.insertBefore(domElement, oldDom.childNodes[i])
             }
           } else {

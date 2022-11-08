@@ -1,8 +1,8 @@
-// 为dom对象添加属性
+// 用于设置/更新元素节点属性
 export default function updateElementNode(element, virtualDOM, oldVirtualDOM = {}) {
   const newProps = virtualDOM.props || {};
   const oldProps = oldVirtualDOM.props || {};
-
+  // 更新元素属性
   Object.keys(newProps).forEach(propName => {
     const newPropsValue = newProps[propName]
     const oldPropsValue = oldProps[propName]
@@ -30,7 +30,6 @@ export default function updateElementNode(element, virtualDOM, oldVirtualDOM = {
         }
       }
     }
-    
   })
   // 判断属性被删除的情况
   Object.keys(oldProps).forEach(propName => {

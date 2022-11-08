@@ -23,7 +23,7 @@ export default function mountComponent(virtualDOM, container, oldDom) {
        component.props.ref(component)
     }
   }
-
+  // 调用mountElement渲染组件
   mountElement(nextVirtualDOM, container, oldDom);
 }
 

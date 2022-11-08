@@ -36,6 +36,7 @@ export default function unmountNode(node) {
     for(let i = 0; i < node.childNodes.length; i++) {
       console.log(node, i, 27)
       unmountNode(node.childNodes[i])
+      // 每次都删除第一个元素，需要i--
       i--
     }
   }
